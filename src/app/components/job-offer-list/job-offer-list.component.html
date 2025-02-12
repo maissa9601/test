@@ -1,0 +1,29 @@
+<button routerLink="/offer">joboffer</button>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>Titre</th>
+    <th>Description</th>
+    <th>Entreprise</th>
+    <th>Localisation</th>
+    <th>Salaire</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let offer of offers">
+    <td>{{ offer.title }}</td>
+    <td>{{ offer.description }}</td>
+    <td>{{ offer.company }}</td>
+    <td>{{ offer.location }}</td>
+    <td>{{ offer.salary }} €</td>
+      <td>
+          <button routerLink="/offer/{{offer.id}}">mettre à jour</button>
+        <button (click)="deleteJobOffer(offer.id)">Supprimer</button>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- ✅ Ajout d'une vérification pour éviter une erreur si `offers` est indéfini -->
+<p *ngIf="offers?.length === 0">Aucune offre d'emploi disponible.</p>
