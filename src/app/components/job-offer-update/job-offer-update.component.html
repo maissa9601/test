@@ -1,0 +1,45 @@
+<form [formGroup]="updateOfferForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="title">Titre:</label>
+    <input id="title" formControlName="title" />
+    <div *ngIf="updateOfferForm.get('title')?.invalid && updateOfferForm.get('title')?.touched">
+      Le titre est requis.
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="updateOfferForm.get('description')?.invalid && updateOfferForm.get('description')?.touched">
+      La description est requise.
+    </div>
+  </div>
+
+  <div>
+    <label for="company">Entreprise:</label>
+    <input id="company" formControlName="company" />
+    <div *ngIf="updateOfferForm.get('company')?.invalid && updateOfferForm.get('company')?.touched">
+      L'entreprise est requise.
+    </div>
+  </div>
+
+  <div>
+    <label for="location">Localisation:</label>
+    <input id="location" formControlName="location" />
+    <div *ngIf="updateOfferForm.get('location')?.invalid && updateOfferForm.get('location')?.touched">
+      La localisation est requise.
+    </div>
+  </div>
+
+  <div>
+    <label for="salary">Salaire:</label>
+    <input id="salary" type="number" formControlName="salary" />
+    <div *ngIf="updateOfferForm.get('salary')?.invalid && updateOfferForm.get('salary')?.touched">
+      Un salaire valide est requis.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="updateOfferForm.invalid" (click)="updateJobOffer()">Soumettre</button>
+
+
+</form>

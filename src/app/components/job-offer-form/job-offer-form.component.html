@@ -1,0 +1,46 @@
+<form [formGroup]="postOfferForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="title">Titre:</label>
+    <input id="title" formControlName="title" />
+    <div *ngIf="postOfferForm.get('title')?.invalid && postOfferForm.get('title')?.touched">
+      Le titre est requis.
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="postOfferForm.get('description')?.invalid && postOfferForm.get('description')?.touched">
+      La description est requise.
+    </div>
+  </div>
+
+  <div>
+    <label for="company">Entreprise:</label>
+    <input id="company" formControlName="company" />
+    <div *ngIf="postOfferForm.get('company')?.invalid && postOfferForm.get('company')?.touched">
+      L'entreprise est requise.
+    </div>
+  </div>
+
+  <div>
+    <label for="location">Localisation:</label>
+    <input id="location" formControlName="location" />
+    <div *ngIf="postOfferForm.get('location')?.invalid && postOfferForm.get('location')?.touched">
+      La localisation est requise.
+    </div>
+  </div>
+
+  <div>
+    <label for="salary">Salaire:</label>
+    <input id="salary" type="number" formControlName="salary" />
+    <div *ngIf="postOfferForm.get('salary')?.invalid && postOfferForm.get('salary')?.touched">
+      Un salaire valide est requis.
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="postOfferForm.invalid">Soumettre</button>
+
+  <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</form>
